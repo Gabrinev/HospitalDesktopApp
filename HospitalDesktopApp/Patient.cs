@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalDesktopApp
 {
-    class Patient : Persona
+    public class Patient : Persona
     {
 
         private int _id_patient;
@@ -24,6 +24,10 @@ namespace HospitalDesktopApp
             {
                 return _id_patient;
             }
+            set
+            {
+                _id_patient = value;
+            }
         }
         public int id_asigned_doc
         {
@@ -31,10 +35,14 @@ namespace HospitalDesktopApp
             {
                 return _id_asigned_doc;
             }
+            set
+            {
+                _id_asigned_doc = value;
+            }
         }
         public override string ToString()
         {
-            return base.ToString() + " " + " id patient: " + this.id_patient + " id doctor asignado: " + this.id_asigned_doc;
+            return "PACIENTE " + this.id_patient +", "+ base.ToString() + ", "  + this.id_asigned_doc;
         }
 
     }

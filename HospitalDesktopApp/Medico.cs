@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalDesktopApp
 {
-    class Medico : Persona
+    public class Medico : Persona
     {
         private int _id_doc;
 
@@ -19,11 +19,16 @@ namespace HospitalDesktopApp
             get
             {
                 return _id_doc;
+
+            }
+            set
+            {
+                _id_doc = value;
             }
         }
         public override string ToString()
         {
-            return base.ToString() + " " + " id medico: " + this.id_doc;
+            return "MEDICO "+ this.id_doc +", "+ base.ToString();
         }
 
     }

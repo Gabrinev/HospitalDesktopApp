@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalDesktopApp
 {
-    class Persona
+    public class Persona
     {
         private String _dni;
         private String _name;
@@ -29,12 +29,20 @@ namespace HospitalDesktopApp
             {
                 return _name;
             }
+            set
+            {
+                _name = value;
+            }
         }
         public String surname
         {
             get
             {
                 return _surname;
+            }
+            set
+            {
+                _surname = value;
             }
         }
         public Persona(String dni, String name, String surname)
@@ -45,7 +53,7 @@ namespace HospitalDesktopApp
         }
         public override string ToString()
         {
-            return "dni: " + this.dni + " nombre: " + this.name + " apellido: " + this.surname;
+            return this.dni + ", " + this.name + ", " + this.surname;
         }
     }
 }
