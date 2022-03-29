@@ -12,14 +12,16 @@ namespace HospitalDesktopApp
 {
     public partial class ModPatientForm : Form
     {        
-        public Patient currentPat = null;
+        public Patient currentPat;
         List<Patient> patients;
-        Boolean add = true;
+        Boolean add;
         ComboBox combobox;
         public ModPatientForm(List<Patient> pats, ComboBox a)
         {
             InitializeComponent();
             combobox = a;
+            currentPat = null;
+            add = true;
             comboBoxSelected.SelectedItem = "0";
 
 
@@ -27,7 +29,7 @@ namespace HospitalDesktopApp
 
             if (patients.Count > 0)
             {
-                add = false;
+                
                 foreach (Patient p in patients)
                 {
                     comboBoxSelected.Items.Add(p.id_patient);
@@ -37,8 +39,9 @@ namespace HospitalDesktopApp
 
         private void comboBoxSelected_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!add)
+            if (comboBoxSelected.SelectedItem.ToString() != "0")
             {
+                add = false;
                 foreach (Patient p in patients)
                 {
                     if (p.id_patient == Convert.ToInt32(comboBoxSelected.SelectedItem.ToString()))
@@ -49,8 +52,6 @@ namespace HospitalDesktopApp
                         txtId.Text = p.id_patient.ToString();
                         txtIdDoc.Text = p.id_asigned_doc.ToString();
                         currentPat = p;
-
-
                     }
                 }
             }

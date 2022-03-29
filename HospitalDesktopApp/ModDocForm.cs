@@ -13,13 +13,15 @@ namespace HospitalDesktopApp
     public partial class ModDocForm : Form
     {
         
-        public Medico currentDoc = null;
+        public Medico currentDoc;
         List<Medico> docs;
-        Boolean add = true;
+        Boolean add;
         ComboBox combobox;
         public ModDocForm(List<Medico>docs, ComboBox a)
         {
             InitializeComponent();
+            add = true;
+            currentDoc = null;
             comboBoxSelected.SelectedItem = "0";
             combobox = a;
 
@@ -28,7 +30,7 @@ namespace HospitalDesktopApp
 
             if (docs.Count > 0)
             {
-                add = false;
+                
                 foreach (Medico m in docs)
                 {
                     comboBoxSelected.Items.Add(m.id_doc);
@@ -40,8 +42,9 @@ namespace HospitalDesktopApp
 
         private void comboBoxSelected_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!add)
+            if (comboBoxSelected.SelectedItem.ToString()!= "0")
             {
+                add = false;    
                 foreach (Medico m in docs)
                 {
                     if (m.id_doc == Convert.ToInt32(comboBoxSelected.SelectedItem.ToString()))
@@ -50,9 +53,7 @@ namespace HospitalDesktopApp
                         txtName.Text = m.name;
                         txtSurname.Text = m.surname;
                         txtId.Text = m.id_doc.ToString();
-                        currentDoc = m;
-                        
-
+                        currentDoc = m;                      
                     }
                 }
             }
